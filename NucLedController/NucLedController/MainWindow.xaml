@@ -1,0 +1,16 @@
+﻿<Window x:Class="NucLedController.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NucLedController"
+        mc:Ignorable="d"
+        Title="NUC LED Controller" Height="173.928" Width="316.206" SizeToContent="WidthAndHeight">
+    <Grid Margin="10">
+        <ComboBox x:Name="comboBoxColour" HorizontalAlignment="Left" Margin="100,10,0,0" VerticalAlignment="Top" Width="83"/>
+        <Button x:Name="button" Content="Apply" HorizontalAlignment="Left" Margin="10,91,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+        <Label x:Name="label" Content="Colour" HorizontalAlignment="Left" Margin="40,10,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="comboBoxTransition" HorizontalAlignment="Left" Margin="100,55,0,0" VerticalAlignment="Top" Width="123"/>
+        <Label x:Name="label1" Content="Transition" HorizontalAlignment="Left" Margin="24,51,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.165,0.065"/>
+    </Grid>
+</Window>
