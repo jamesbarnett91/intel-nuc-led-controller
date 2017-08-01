@@ -5,12 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NucLedController"
         mc:Ignorable="d"
-        Title="NUC LED Controller" Height="173.928" Width="316.206" SizeToContent="WidthAndHeight">
+        Title="NUC LED Controller" Height="243.262" Width="364.333" SizeToContent="WidthAndHeight">
     <Grid Margin="10">
-        <ComboBox x:Name="comboBoxColour" HorizontalAlignment="Left" Margin="100,10,0,0" VerticalAlignment="Top" Width="83"/>
-        <Button x:Name="button" Content="Apply" HorizontalAlignment="Left" Margin="10,91,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
-        <Label x:Name="label" Content="Colour" HorizontalAlignment="Left" Margin="40,10,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="comboBoxTransition" HorizontalAlignment="Left" Margin="100,55,0,0" VerticalAlignment="Top" Width="123"/>
-        <Label x:Name="label1" Content="Transition" HorizontalAlignment="Left" Margin="24,51,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.165,0.065"/>
+        <TabControl x:Name="tabControl" Height="156" VerticalAlignment="Top">
+            <TabItem x:Name="MANUAL" Header="Manual Control">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                        <GradientStop Color="#FFFFFEFE" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="White" HorizontalAlignment="Left" Width="332" Margin="0,0,-2,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <RadioButton x:Name="radioButtonEnableLed" Content="Enable LED" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" GroupName="LEDControl" IsChecked="True"/>
+                    <ComboBox x:Name="comboBoxColour" HorizontalAlignment="Left" Margin="102,37,0,0" VerticalAlignment="Top" Width="83" IsEnabled="{Binding IsChecked, ElementName=radioButtonEnableLed}" Grid.ColumnSpan="2"/>
+                    <Label x:Name="label" Content="Colour" HorizontalAlignment="Left" Margin="46,33,0,0" VerticalAlignment="Top"/>
+                    <ComboBox x:Name="comboBoxTransition" HorizontalAlignment="Left" Margin="102,70,0,0" VerticalAlignment="Top" Width="123" IsEnabled="{Binding IsChecked, ElementName=radioButtonEnableLed}" Grid.ColumnSpan="2"/>
+                    <Label x:Name="label1" Content="Transition" HorizontalAlignment="Left" Margin="30,66,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.165,0.065"/>
+                    <RadioButton x:Name="radioButtonDisableLed" Content="Disable LED" HorizontalAlignment="Left" Margin="10,107,0,0" VerticalAlignment="Top" GroupName="LEDControl"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="AUTO" Header="Auto">
+                <Grid Background="White" HorizontalAlignment="Left" Width="332" Margin="0,0,-2,0">
+                    <RadioButton x:Name="radioButtonCycleColour" Content="Cycle Colours" HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top" Width="95"/>
+                    <Label x:Name="label2" Content="The following additional modes are not provided by the Intel WMI&#xA;Interface, they are generated and controlled by this program. They will&#xD;&#xA;only work while this program is running." HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="340" Height="54" FontSize="10"/>
+                    <Slider x:Name="sliderCycleRate" HorizontalAlignment="Left" Margin="113,81,0,0" VerticalAlignment="Top" Minimum="1" Maximum="5000" Width="110" LargeChange="100" Height="20" SmallChange="10" TickPlacement="BottomRight" IsSnapToTickEnabled="True" TickFrequency="10" IsEnabled="{Binding IsChecked, ElementName=radioButtonCycleColour}" Value="500" />
+                    <Label x:Name="label3" Content="Cycle Rate " HorizontalAlignment="Left" Margin="40,74,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="textBoxCycleRateVal" HorizontalAlignment="Left" Height="23" Margin="230,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="66" Text="{Binding ElementName=sliderCycleRate, Path=Value, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsChecked, ElementName=radioButtonCycleColour}"/>
+                    <Label x:Name="label4" Content="(milliseconds)" HorizontalAlignment="Left" Margin="35,91,0,0" VerticalAlignment="Top" Width="73" FontSize="10" RenderTransformOrigin="0.511,0.319"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button x:Name="button" Content="Apply" HorizontalAlignment="Left" Margin="10,168,0,0" VerticalAlignment="Top" Width="75" Click="applyChanges"/>
+        <Label x:Name="lableStatusText" Content="" Margin="100,162,10,0" VerticalAlignment="Top" Foreground="#FF807F7F"/>
     </Grid>
 </Window>

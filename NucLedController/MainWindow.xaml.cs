@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace NucLedController
 {
@@ -20,25 +11,59 @@ namespace NucLedController
     /// </summary>
     public partial class MainWindow : Window
     {
+        private IControlMode currentControlMode = null;
+
         public MainWindow()
         {
             InitializeComponent();
-            //comboBoxColour.ItemsSource = Enum.GetValues(typeof(LEDController.Colour));
             comboBoxColour.ItemsSource = LEDColour.AvailableColours;
             comboBoxColour.DisplayMemberPath = "DisplayName";
             comboBoxColour.SelectedIndex = 0;
-            //comboBoxColour.SelectedValuePath = "ByteValue";
             comboBoxTransition.ItemsSource = LEDTransition.AvailableTransitions;
             comboBoxTransition.DisplayMemberPath = "DisplayName";
             comboBoxTransition.SelectedIndex = 0;
+
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void applyChanges(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("clicked! " + (LEDColour)comboBoxColour.SelectedItem);
+
             try
             {
-                LEDController.SetLEDState((LEDTransition)comboBoxTransition.SelectedItem, (LEDColour)comboBoxColour.SelectedItem);
+
+                // Stop the current control mode if there is one
+                if(currentControlMode != null)
+                {
+                    currentControlMode.Stop();
+                }
+
+                TabItem tabItem = tabControl.SelectedItem as TabItem;
+                if(tabItem.Name.ToString() == "AUTO")
+                {
+                    if(radioButtonCycleColour.IsChecked ?? false)
+                    {
+                        currentControlMode = new BlinkColourCyclerControlMode((int) sliderCycleRate.Value);
+                        currentControlMode.Start();
+                        lableStatusText.Content = "Colour cycle mode enabled";
+                    }
+                }
+                else
+                {
+                    if (radioButtonDisableLed.IsChecked ?? false)
+                    {
+                        LEDController.DisableLED();
+                        lableStatusText.Content = "LED disabled";
+                    }
+                    else
+                    {
+                        LEDTransition transition = comboBoxTransition.SelectedItem as LEDTransition;
+                        LEDColour colour = comboBoxColour.SelectedItem as LEDColour;
+                        LEDController.SetLEDState(transition, colour);
+                        lableStatusText.Content = $"LED set: {colour.DisplayName} - {transition.DisplayName}";
+                    }
+
+                }
+
             }
             catch (Exception ex)
             {

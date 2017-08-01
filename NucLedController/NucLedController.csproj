@@ -63,6 +63,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BlinkColourCyclerControlMode.cs" />
+    <Compile Include="IControlMode.cs" />
     <Compile Include="LEDColour.cs" />
     <Compile Include="LEDController.cs" />
     <Compile Include="LEDTransition.cs" />

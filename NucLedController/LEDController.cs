@@ -12,5 +12,10 @@
             WMISystemManagement.Instance.WriteData(new byte[] { RING_LED_COMMAND_CODE, brightness, transition.ByteValue, colour.ByteValue });
         }
 
+        public static void DisableLED()
+        {
+            WMISystemManagement.Instance.WriteData(new byte[] { RING_LED_COMMAND_CODE, 0x00, 0x00, 0x00 });
+        }
+
     }
 }
