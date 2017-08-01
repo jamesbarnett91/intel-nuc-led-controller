@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NucLedController"
         mc:Ignorable="d"
-        Title="NUC LED Controller" Height="243.262" Width="364.333" SizeToContent="WidthAndHeight">
+        Title="NUC LED Controller" Height="305.928" Width="382.999" SizeToContent="WidthAndHeight">
     <Grid Margin="10">
-        <TabControl x:Name="tabControl" Height="156" VerticalAlignment="Top">
+        <TabControl x:Name="tabControl" Height="223" VerticalAlignment="Top">
             <TabItem x:Name="MANUAL" Header="Manual Control">
                 <TabItem.Background>
                     <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
@@ -30,16 +30,21 @@
             </TabItem>
             <TabItem x:Name="AUTO" Header="Auto">
                 <Grid Background="White" HorizontalAlignment="Left" Width="332" Margin="0,0,-2,0">
-                    <RadioButton x:Name="radioButtonCycleColour" Content="Cycle Colours" HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top" Width="95"/>
-                    <Label x:Name="label2" Content="The following additional modes are not provided by the Intel WMI&#xA;Interface, they are generated and controlled by this program. They will&#xD;&#xA;only work while this program is running." HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="340" Height="54" FontSize="10"/>
-                    <Slider x:Name="sliderCycleRate" HorizontalAlignment="Left" Margin="113,81,0,0" VerticalAlignment="Top" Minimum="1" Maximum="5000" Width="110" LargeChange="100" Height="20" SmallChange="10" TickPlacement="BottomRight" IsSnapToTickEnabled="True" TickFrequency="10" IsEnabled="{Binding IsChecked, ElementName=radioButtonCycleColour}" Value="500" />
-                    <Label x:Name="label3" Content="Cycle Rate " HorizontalAlignment="Left" Margin="40,74,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="textBoxCycleRateVal" HorizontalAlignment="Left" Height="23" Margin="230,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="66" Text="{Binding ElementName=sliderCycleRate, Path=Value, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsChecked, ElementName=radioButtonCycleColour}"/>
-                    <Label x:Name="label4" Content="(milliseconds)" HorizontalAlignment="Left" Margin="35,91,0,0" VerticalAlignment="Top" Width="73" FontSize="10" RenderTransformOrigin="0.511,0.319"/>
+                    <RadioButton x:Name="radioButtonCycleColour" Content="Cycle Colours" HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top" Width="95" ToolTip="Cycle between the different LED colous, chaning every n milliseconds"/>
+                    <Label x:Name="label2" Content="The following additional modes are not provided by the Intel WMI&#xA;Interface, they are generated and controlled by this program. They will&#xA;only work while this program is running, and will consume CPU time." HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="340" Height="54" FontSize="10"/>
+                    <Slider x:Name="sliderCycleRate" HorizontalAlignment="Left" Margin="113,74,0,0" VerticalAlignment="Top" Minimum="1" Maximum="5000" Width="110" LargeChange="100" Height="20" SmallChange="10" TickPlacement="BottomRight" IsSnapToTickEnabled="True" TickFrequency="10" IsEnabled="{Binding IsChecked, ElementName=radioButtonCycleColour}" Value="500" />
+                    <Label x:Name="label3" Content="Cycle Rate " HorizontalAlignment="Left" Margin="40,69,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="textBoxCycleRateVal" HorizontalAlignment="Left" Height="23" Margin="228,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="66" Text="{Binding ElementName=sliderCycleRate, Path=Value, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsChecked, ElementName=radioButtonCycleColour}"/>
+                    <Label x:Name="label4" Content="(milliseconds)" HorizontalAlignment="Left" Margin="35,85,0,0" VerticalAlignment="Top" Width="73" FontSize="10" RenderTransformOrigin="0.511,0.319"/>
+                    <RadioButton x:Name="radioButtonFadeColour" Content="Fade Colours" HorizontalAlignment="Left" Margin="10,119,0,0" VerticalAlignment="Top" Width="95" ToolTip="Fade between each colour (via fading to black). Low cycle rates will use a lot of CPU!"/>
+                    <Label x:Name="label3_Copy" Content="Cycle Rate " HorizontalAlignment="Left" Margin="40,132,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="label4_Copy" Content="(milliseconds)" HorizontalAlignment="Left" Margin="35,148,0,0" VerticalAlignment="Top" Width="73" FontSize="10" RenderTransformOrigin="0.511,0.319"/>
+                    <Slider x:Name="sliderFadeRate" HorizontalAlignment="Left" Margin="113,138,0,0" VerticalAlignment="Top" Minimum="1" Maximum="30000" Width="110" LargeChange="500" Height="20" SmallChange="100" TickPlacement="BottomRight" IsSnapToTickEnabled="True" TickFrequency="100" IsEnabled="{Binding IsChecked, ElementName=radioButtonFadeColour}" Value="500" />
+                    <TextBox x:Name="textBoxFadeRateVal" HorizontalAlignment="Left" Height="23" Margin="228,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="66" Text="{Binding Value, ElementName=sliderFadeRate, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsChecked, ElementName=radioButtonFadeColour}" RenderTransformOrigin="0.52,1.217"/>
                 </Grid>
             </TabItem>
         </TabControl>
-        <Button x:Name="button" Content="Apply" HorizontalAlignment="Left" Margin="10,168,0,0" VerticalAlignment="Top" Width="75" Click="applyChanges"/>
-        <Label x:Name="lableStatusText" Content="" Margin="100,162,10,0" VerticalAlignment="Top" Foreground="#FF807F7F"/>
+        <Button x:Name="button" Content="Apply" HorizontalAlignment="Left" Margin="0,234,0,0" VerticalAlignment="Top" Width="75" Click="applyChanges"/>
+        <Label x:Name="lableStatusText" Content="" Margin="92,229,0,0" VerticalAlignment="Top" Foreground="#FF807F7F"/>
     </Grid>
 </Window>

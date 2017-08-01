@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Navigation;
 
 namespace NucLedController
 {
@@ -46,6 +48,12 @@ namespace NucLedController
                         currentControlMode.Start();
                         lableStatusText.Content = "Colour cycle mode enabled";
                     }
+                    else if (radioButtonFadeColour.IsChecked ?? false)
+                    {
+                        currentControlMode = new FadeColourCyclerControlMode((int) sliderFadeRate.Value);
+                        currentControlMode.Start();
+                        lableStatusText.Content = "Colour fade mode enabled";
+                    }
                 }
                 else
                 {
@@ -71,5 +79,6 @@ namespace NucLedController
             }
 
         }
+
     }
 }

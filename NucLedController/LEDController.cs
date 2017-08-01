@@ -8,7 +8,12 @@
 
         public static void SetLEDState(LEDTransition transition, LEDColour colour)
         {
-            byte brightness = 0x64; // Just hardcode to max brightness for now
+            byte brightness = 0x64; // Max brightness value
+            WMISystemManagement.Instance.WriteData(new byte[] { RING_LED_COMMAND_CODE, brightness, transition.ByteValue, colour.ByteValue });
+        }
+
+        public static void SetLEDState(LEDTransition transition, LEDColour colour, byte brightness)
+        {
             WMISystemManagement.Instance.WriteData(new byte[] { RING_LED_COMMAND_CODE, brightness, transition.ByteValue, colour.ByteValue });
         }
 
