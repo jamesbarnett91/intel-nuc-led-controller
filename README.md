@@ -14,6 +14,7 @@ This tool provides options for both manual control and some experimental automat
 In manual mode the desired LED colour and blink/fade rates can be set, or the LED disabled all together.
 
 Currently the automatic control options allow cycling or fading between all the LED colours at a given rate. Lower rates (i.e. quicker colour changes) will consume more CPU resources to manage. Other auto control modes are a WIP.
+
 These automatic modes are fully controlled by this software, and so the program must be left running to use these modes.
 In manual mode the setting can be applied and the application closed.
 
