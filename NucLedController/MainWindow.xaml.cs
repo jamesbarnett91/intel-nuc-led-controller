@@ -54,6 +54,12 @@ namespace NucLedController
                         currentControlMode.Start();
                         lableStatusText.Content = "Colour fade mode enabled";
                     }
+                    else if (radioButtonCPUUsage.IsChecked ?? false)
+                    {
+                        currentControlMode = new CPUUsageIndicatorControlMode(2000); //TODO make configurable
+                        currentControlMode.Start();
+                        lableStatusText.Content = "CPU utilisation indicator mode enabled";
+                    }
                 }
                 else
                 {

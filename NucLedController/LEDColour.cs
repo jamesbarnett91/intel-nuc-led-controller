@@ -28,7 +28,12 @@ namespace NucLedController
 
         public override string ToString()
         {
-            return this.Identifier + this.ByteValue;
+            return Identifier + ByteValue;
+        }
+
+        public static LEDColour getLEDColour(string identifier)
+        {
+            return AvailableColours.Find(c => c.Identifier == identifier);
         }
     }
 }

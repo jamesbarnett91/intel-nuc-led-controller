@@ -23,7 +23,7 @@ namespace NucLedController
 
         private void Tick(object source, ElapsedEventArgs e)
         {
-            LEDController.SetLEDState(LEDTransition.AvailableTransitions.Find(t => t.Identifier.ToString() == "ALWAYS_ON"), LEDColour.AvailableColours.ElementAt(currentColourIndex));
+            LEDController.SetLEDState(LEDTransition.getLEDTransition("ALWAYS_ON"), LEDColour.AvailableColours.ElementAt(currentColourIndex));
             if (currentColourIndex == maxColourIndex)
             {
                 currentColourIndex = 0;

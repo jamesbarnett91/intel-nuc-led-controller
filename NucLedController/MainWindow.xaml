@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NucLedController"
         mc:Ignorable="d"
-        Title="NUC LED Controller" Height="305.928" Width="382.999" SizeToContent="WidthAndHeight">
+        Title="NUC LED Controller" Height="315.156" Width="382.999" SizeToContent="WidthAndHeight">
     <Grid Margin="10">
-        <TabControl x:Name="tabControl" Height="223" VerticalAlignment="Top">
+        <TabControl x:Name="tabControl" Height="230" VerticalAlignment="Top">
             <TabItem x:Name="MANUAL" Header="Manual Control">
                 <TabItem.Background>
                     <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
@@ -41,10 +41,11 @@
                     <Label x:Name="label4_Copy" Content="(milliseconds)" HorizontalAlignment="Left" Margin="35,148,0,0" VerticalAlignment="Top" Width="73" FontSize="10" RenderTransformOrigin="0.511,0.319"/>
                     <Slider x:Name="sliderFadeRate" HorizontalAlignment="Left" Margin="113,138,0,0" VerticalAlignment="Top" Minimum="1" Maximum="30000" Width="110" LargeChange="500" Height="20" SmallChange="100" TickPlacement="BottomRight" IsSnapToTickEnabled="True" TickFrequency="100" IsEnabled="{Binding IsChecked, ElementName=radioButtonFadeColour}" Value="500" />
                     <TextBox x:Name="textBoxFadeRateVal" HorizontalAlignment="Left" Height="23" Margin="228,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="66" Text="{Binding Value, ElementName=sliderFadeRate, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsChecked, ElementName=radioButtonFadeColour}" RenderTransformOrigin="0.52,1.217"/>
+                    <RadioButton x:Name="radioButtonCPUUsage" Content="CPU Utilisation" HorizontalAlignment="Left" Margin="10,177,0,0" VerticalAlignment="Top" Width="98" ToolTip="LED colour will be set based on the current CPU utilisation. Green when &lt; 33% , red when > 66%, yellow otherwise."/>
                 </Grid>
             </TabItem>
         </TabControl>
-        <Button x:Name="button" Content="Apply" HorizontalAlignment="Left" Margin="0,234,0,0" VerticalAlignment="Top" Width="75" Click="applyChanges"/>
-        <Label x:Name="lableStatusText" Content="" Margin="92,229,0,0" VerticalAlignment="Top" Foreground="#FF807F7F"/>
+        <Button x:Name="button" Content="Apply" HorizontalAlignment="Left" Margin="0,240,0,0" VerticalAlignment="Top" Width="75" Click="applyChanges"/>
+        <Label x:Name="lableStatusText" Content="" Margin="92,235,0,0" VerticalAlignment="Top" Foreground="#FF807F7F"/>
     </Grid>
 </Window>

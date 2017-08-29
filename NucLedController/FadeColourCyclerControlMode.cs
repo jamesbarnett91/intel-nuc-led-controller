@@ -39,7 +39,7 @@ namespace NucLedController
 
         private void Tick(object source, ElapsedEventArgs e)
         {
-            LEDController.SetLEDState(LEDTransition.AvailableTransitions.Find(t => t.Identifier.ToString() == "ALWAYS_ON"), LEDColour.AvailableColours.ElementAt(currentColourIndex), currentBrightness);
+            LEDController.SetLEDState(LEDTransition.getLEDTransition("ALWAYS_ON"), LEDColour.AvailableColours.ElementAt(currentColourIndex), currentBrightness);
 
             // TODO more of the fade duration should be spent at the lower brightness levels, since the perceived change in brightness is much more apparent at the bottom end.
             // e.g. the perceived difference between 0x10 and 0x20 is much larger than 0x50 and 0x60, so scaling up linearly wastes a lot of time increasing imperceivable brightness changes at the top of the range.

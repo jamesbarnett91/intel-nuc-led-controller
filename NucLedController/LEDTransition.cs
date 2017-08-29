@@ -28,8 +28,12 @@ namespace NucLedController
 
         public override string ToString()
         {
-            return this.Identifier + this.ByteValue;
+            return Identifier + ByteValue;
         }
 
+        public static LEDTransition getLEDTransition(string identifier)
+        {
+            return AvailableTransitions.Find(c => c.Identifier == identifier);
+        }
     }
 }
