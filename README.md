@@ -5,7 +5,7 @@ Requires the 'SW Control' option to be set in the BIOS.
 ![manual control](http://james-barnett.net/files/intel-nuc-led-controller/screenshots/manual.png) ![auto control](http://james-barnett.net/files/intel-nuc-led-controller/screenshots/auto.png)
 
 ## Install
-Grab the latest release zip [here](https://github.com/jamesbarnett91/intel-nuc-led-controller/releases/download/v0.2/NucLedController-v0.2.zip) (or from the releases page).  
+Grab the latest release zip [here](https://github.com/jamesbarnett91/intel-nuc-led-controller/releases/download/v0.3/NucLedController-v0.3.zip) (or from the releases page).  
 Unzip somewhere, and run NucLedController.exe
 
 
