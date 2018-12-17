@@ -2,7 +2,7 @@
 Simple GUI tool to control the front panel LED ring on newer Intel NUCs (such as the NUC7i and the NUC6CAYS series).
 Requires the 'SW Control' option to be set in the BIOS.
 
-![manual control](http://james-barnett.net/files/intel-nuc-led-controller/screenshots/manual.png) ![auto control](http://james-barnett.net/files/intel-nuc-led-controller/screenshots/auto.png)
+![manual control](https://jamesbarnett.io/files/intel-nuc-led-controller/screenshots/manual.png) ![auto control](https://jamesbarnett.io/files/intel-nuc-led-controller/screenshots/auto.png)
 
 ## Install
 Grab the latest release zip [here](https://github.com/jamesbarnett91/intel-nuc-led-controller/releases/download/v0.3/NucLedController-v0.3.zip) (or from the releases page).  
